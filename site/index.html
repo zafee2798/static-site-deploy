@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rsync → nginx</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="wrap">
+
+    <header class="eyebrow-row">
+      <img class="server-icon" src="assets/server-icon.svg" alt="Server rack icon" width="40" height="40">
+      <span class="eyebrow">STATIC SITE / NGINX / RSYNC</span>
+    </header>
+
+    <h1>Shipped with three lines<br>of shell.</h1>
+    <p class="lede">
+      This page was written on a laptop, synced to a Linux server with
+      <code>rsync</code>, and is being served to you right now by
+      <code>nginx</code>. No build step. No framework. Just files on disk.
+    </p>
+
+    <section class="terminal" aria-label="Example deploy command output">
+      <div class="terminal-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="terminal-title">deploy.sh</span>
+      </div>
+      <pre class="terminal-body"><span class="prompt">$</span> ./deploy.sh
+<span class="line">building file list ... done</span>
+<span class="line">index.html</span>
+<span class="line">style.css</span>
+<span class="line">assets/server-icon.svg</span>
+<span class="line ok">sent 4,213 bytes  received 96 bytes  8,618.00 bytes/sec</span>
+<span class="line ok">total size is 4,102  speedup is 0.95</span>
+<span class="prompt">$</span> <span class="cursor">▍</span></pre>
+    </section>
+
+    <section class="stack">
+      <h2>What's actually running</h2>
+      <ol class="stack-list">
+        <li>
+          <span class="stack-num">01</span>
+          <div>
+            <h3>A Linux server</h3>
+            <p>One small droplet, reachable over SSH with a key pair — no passwords.</p>
+          </div>
+        </li>
+        <li>
+          <span class="stack-num">02</span>
+          <div>
+            <h3>nginx</h3>
+            <p>Configured with a single <code>server</code> block pointing at this directory.</p>
+          </div>
+        </li>
+        <li>
+          <span class="stack-num">03</span>
+          <div>
+            <h3>rsync over SSH</h3>
+            <p>Every deploy only sends the bytes that changed since the last one.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <footer class="foot">
+      <p>Deployed with <code>deploy.sh</code> · served by nginx</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
